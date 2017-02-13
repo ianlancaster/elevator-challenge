@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "standard"
+  ],
+  "plugins": [
+    "babel",
+    "mocha"
+  ],
+  "env": {
+    "browser" : true
+  },
+  "globals": {
+    "it": true,
+    "describe": true,
+    "context": true,
+    "afterEach": true
+    },
+  "rules": {
+  }
+}

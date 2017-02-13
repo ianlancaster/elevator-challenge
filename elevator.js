@@ -1,8 +1,8 @@
 export default class Elevator {
-  constructor() {
+  constructor () {
   }
 
-  reset() {
+  reset () {
     this.constructor()
   }
 }
