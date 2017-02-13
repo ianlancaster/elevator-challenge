@@ -7,11 +7,18 @@ const Elevator = require('../elevator').default
 const Person = require('../person').default
 
 describe('Elevator', () => {
-  const elevator = new Elevator()
+  const elevator = new Elevator({ name: 'elevator1' })
   const alex = new Person({ name: 'luke', currentFloor: 2 })
 
-  afterEach(() => {
-    elevator.reset()
+  it('should be instantiated with all the proper poperties and methods when created', () => {
+    expect(elevator).to.exist
+    expect(elevator.name).to.equal('elevator1')
+    expect(elevator.currentFloor).to.equal(0)
+    expect(elevator.floorsTraversed).to.equal(0)
+    expect(elevator.stopsMade).to.equal(0)
+    expect(elevator.requests).to.deep.equal([])
+    expect(elevator.riders).to.deep.equal([])
+    expect(elevator.status).to.equal('idle')
   })
 
   it('should bring a rider to a floor above their current floor', () => {
