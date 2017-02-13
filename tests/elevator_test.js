@@ -6,11 +6,11 @@ const expect = require('chai').expect
 const Elevator = require('../elevator').default
 const Person = require('../person').default
 
-describe('Elevator', function () {
+describe('Elevator', () => {
   const elevator = new Elevator()
-  const alex = new Person('Alex', 2)
+  const alex = new Person({ name: 'luke', currentFloor: 2 })
 
-  afterEach(function () {
+  afterEach(() => {
     elevator.reset()
   })
 
@@ -29,5 +29,21 @@ describe('Elevator', function () {
   })
 
   it('should bring a rider to a floor below their current floor', () => {
+  })
+})
+
+describe('Person', () => {
+  const person1 = new Person({ name: 'Luke', currentFloor: 2 })
+
+  it('should have a name, currentFloor, and elevator requested properties when created', () => {
+    expect(person1.name).to.equal('Luke')
+    expect(person1.currentFloor).to.equal(2)
+    expect(person1.elevatorRequested).to.equal(false)
+  })
+
+  it('should have a method called request elevator that changes elevatorRequested to true', () => {
+    expect(person1.requestElevator).to.be.a('function')
+    person1.requestElevator()
+    expect(person1.elevatorRequested).to.equal(true)
   })
 })
