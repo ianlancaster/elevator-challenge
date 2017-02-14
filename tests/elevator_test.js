@@ -42,6 +42,21 @@ describe('Elevator', () => {
     expect(elevator.requests).to.deep.equal([])
     expect(elevator.riders).to.deep.equal([])
   })
+
+  it('should correctly track key metrics when picking up multiple passangers', () => {
+    Luke.setFloor(2)
+    const Leigh = new Person({ name: 'Leigh', currentFloor: 8 })
+
+    elevator.requestFloor({ person: Luke, requestedFloor: 9 })
+    elevator.requestFloor({ person: Leigh, requestedFloor: 0 })
+
+    expect(elevator.currentFloor).to.equal(0)
+    expect(elevator.status).to.equal('idle')
+    expect(elevator.stopsMade).to.equal(4)
+    expect(elevator.floorsTraversed).to.equal(18)
+    expect(elevator.requests).to.deep.equal([])
+    expect(elevator.riders).to.deep.equal([])
+  })
 })
 
 describe('Person', () => {
@@ -50,12 +65,5 @@ describe('Person', () => {
   it('should have a name, currentFloor, and elevator requested properties when created', () => {
     expect(person1.name).to.equal('Luke')
     expect(person1.currentFloor).to.equal(2)
-    expect(person1.elevatorRequested).to.equal(false)
-  })
-
-  it('should have a method called request elevator that changes elevatorRequested to true', () => {
-    expect(person1.requestElevator).to.be.a('function')
-    person1.requestElevator()
-    expect(person1.elevatorRequested).to.equal(true)
   })
 })
