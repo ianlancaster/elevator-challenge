@@ -22,15 +22,14 @@ describe('Elevator', () => {
   })
 
   it('should bring a rider to a floor above their current floor', () => {
-    elevator.requestFloor({ person: Luke, floor: 5 })
+    elevator.requestFloor({ person: Luke, requestedFloor: 5 })
 
     expect(elevator.currentFloor).to.equal(5)
     expect(elevator.status).to.equal('idle')
     expect(elevator.stopsMade).to.equal(2)
     expect(elevator.floorsTraversed).to.equal(5)
-  })
-
-  it('should bring a rider to a floor below their current floor', () => {
+    expect(elevator.requests).to.deep.equal([])
+    expect(elevator.riders).to.deep.equal([])
   })
 })
 

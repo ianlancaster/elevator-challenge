@@ -1,3 +1,5 @@
+import { pull } from 'lodash'
+
 export default class Elevator {
   constructor ({ name }) {
     this.name = name
@@ -13,14 +15,18 @@ export default class Elevator {
     this.constructor()
   }
 
-  requestFloor ({ person, floor }) {
-    this.goToFloor({ floor: person.currentFloor})
-    this.goToFloor({ floor })
+  requestFloor ({ person, requestedFloor }) {
+    this.requests.push(requestedFloor)
+    this.goToFloor({ requestedFloor: person.currentFloor})
+    this.riders.push(person)
+    this.goToFloor({ requestedFloor })
+    this.requests = pull(this.requests, requestedFloor)
+    this.riders = pull(this.riders, person)
   }
 
-  goToFloor ({ floor }) {
+  goToFloor ({ requestedFloor }) {
     this.stopsMade += 1
-    this.floorsTraversed += Math.abs(this.currentFloor - floor)
-    this.currentFloor = floor
+    this.floorsTraversed += Math.abs(this.currentFloor - requestedFloor)
+    this.currentFloor = requestedFloor
   }
 }
