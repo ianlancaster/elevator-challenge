@@ -1,4 +1,4 @@
-// git hook test toggle
+// git hook test
 
 import { pull } from 'lodash'
 
@@ -19,7 +19,7 @@ export default class Elevator {
 
   requestFloor ({ person, requestedFloor }) {
     this.requests.push(requestedFloor)
-    this.goToFloor({ requestedFloor: person.currentFloor})
+    this.goToFloor({ requestedFloor: person.currentFloor })
     this.riders.push(person)
     this.goToFloor({ requestedFloor })
     this.requests = pull(this.requests, requestedFloor)

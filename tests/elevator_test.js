@@ -84,7 +84,7 @@ describe('Elevator', () => {
     expect(elevator.currentFloor).to.equal(0)
     expect(elevator.status).to.equal('idle')
     expect(elevator.stopsMade).to.equal(4)
-    expect(elevator.floorsTraversed).to.equal(2)
+    expect(elevator.floorsTraversed).to.equal(28)
     expect(elevator.requests).to.deep.equal([])
     expect(elevator.riders).to.deep.equal([])
   })
