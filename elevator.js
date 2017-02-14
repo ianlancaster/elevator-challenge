@@ -1,4 +1,4 @@
-// git hook test
+// git hook test toggle
 
 import { pull } from 'lodash'
 
