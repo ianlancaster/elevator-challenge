@@ -12,7 +12,7 @@ export default class Elevator {
   }
 
   reset () {
-    this.constructor()
+    this.constructor({ name: 'Unamed Elevator' })
   }
 
   requestFloor ({ person, requestedFloor }) {

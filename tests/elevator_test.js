@@ -7,12 +7,16 @@ const Elevator = require('../elevator').default
 const Person = require('../person').default
 
 describe('Elevator', () => {
-  const elevator = new Elevator({ name: 'elevator1' })
+  const elevator = new Elevator({ name: 'Unamed Elevator' })
   const Luke = new Person({ name: 'Luke', currentFloor: 2 })
+
+  beforeEach(() => {
+    elevator.reset()
+  })
 
   it('should be instantiated with all the proper poperties and methods when created', () => {
     expect(elevator).to.exist
-    expect(elevator.name).to.equal('elevator1')
+    expect(elevator.name).to.equal('Unamed Elevator')
     expect(elevator.currentFloor).to.equal(0)
     expect(elevator.floorsTraversed).to.equal(0)
     expect(elevator.stopsMade).to.equal(0)
@@ -21,7 +25,14 @@ describe('Elevator', () => {
     expect(elevator.status).to.equal('idle')
   })
 
-  it('should bring a rider to a floor above their current floor', () => {
+  it('should have a method goToFloor that moves the elevator to a floor and tracks currentFloor and floorsTraversed', () => {
+    elevator.goToFloor({ requestedFloor: 4 })
+
+    expect(elevator.stopsMade).to.equal(1)
+    expect(elevator.floorsTraversed).to.equal(4)
+  })
+
+  it('should have a method called requestFloor that delivers a passanger and keeps track of key metrics', () => {
     elevator.requestFloor({ person: Luke, requestedFloor: 5 })
 
     expect(elevator.currentFloor).to.equal(5)
