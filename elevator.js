@@ -1,3 +1,5 @@
+// git hook test
+
 import { pull } from 'lodash'
 
 export default class Elevator {
