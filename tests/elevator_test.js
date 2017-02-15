@@ -15,6 +15,22 @@ describe('Elevator', () => {
     elevator.reset()
   })
 
+  // itx('should show async console logs', function (done) {
+  //   this.timeout(5000)
+  //   console.log('start')
+  //   elevator.asyncGoToFloor({ requestedFloor: 3 })
+  //   elevator.asyncMoveUp()
+  //   setTimeout(() => console.log('one'), 1000)
+  //   setTimeout(() => console.log('two'), 2000)
+  //
+  //   new Promise((resolve) => {
+  //     setTimeout(() => resolve('three'), 3000)
+  //   }).then((val) => {
+  //     console.log(`done ${val}`)
+  //     done()
+  //   })
+  // })
+
   it('should be instantiated with all the proper poperties and methods when created', () => {
     expect(elevator).to.exist
     expect(elevator.name).to.equal('Unamed Elevator')
